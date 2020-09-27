@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -15,6 +16,8 @@ public class DemoTest {
     @Test
     public void testHomePageTitle() throws InterruptedException {
         WebDriverManager.chromedriver().setup();
+        WebDriverManager.firefoxdriver().setup();
+
         WebDriver driver = new ChromeDriver();
         driver.get(baseUrl);
         String expTitle = "Furniture, Kitchen, Dining Room, Entertainment, Bedroom Sets, Outdoor, Fireplaces";
@@ -30,6 +33,7 @@ public class DemoTest {
         WebDriver driver = new ChromeDriver();
         driver.get(baseUrl);
         WebElement txtSearch = driver.findElement(By.name("search_field"));
+        txtSearch.clear();
         txtSearch.sendKeys("table");
         WebElement btnSearch = driver.findElement(By.xpath("//*[@id=\"search\"]/form/div/span/input"));
         btnSearch.click();
